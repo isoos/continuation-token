@@ -47,7 +47,17 @@ class ContinuationTokenEncoder extends Converter<Map<String, dynamic>, String> {
         bytes[i] = bytes[i] ^ _secret[i % _secret.length];
       }
     }
-    return base64.encode(bytes);
+    return _trimPadding(base64Url.encode(bytes));
+  }
+
+  String _trimPadding(String text) {
+    if (text.endsWith('==')) {
+      return text.substring(0, text.length - 2);
+    } else if (text.endsWith('=')) {
+      return text.substring(0, text.length - 1);
+    } else {
+      return text;
+    }
   }
 }
 
@@ -68,7 +78,7 @@ class ContinuationTokenDecoder extends Converter<String, Map<String, dynamic>> {
   Map<String, dynamic> convert(String input) {
     if (input == null) return null;
     try {
-      final bytes = Uint8List.fromList(base64.decode(input));
+      final bytes = Uint8List.fromList(base64Url.decode(_addPadding(input)));
       if (_secret != null && _secret.isNotEmpty) {
         for (int i = 0; i < bytes.length; i++) {
           bytes[i] = bytes[i] ^ _secret[i % _secret.length];
@@ -78,6 +88,14 @@ class ContinuationTokenDecoder extends Converter<String, Map<String, dynamic>> {
     } catch (_) {
       throw FormatException('Token parse failed.');
     }
+  }
+
+  String _addPadding(String text) {
+    final length = text.length;
+    if (length % 4 == 0) return text;
+    final fullLength = ((length >> 2) + 1) << 2;
+    final padding = '=' * (fullLength - length);
+    return '$text$padding';
   }
 }
 

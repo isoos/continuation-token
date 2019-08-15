@@ -8,7 +8,7 @@ void main() {
       final codec = ContinuationTokenCodec();
 
       final token = codec.encode({'id': 'abc123', 'asc': true});
-      expect(token, 'eyJpZCI6ImFiYzEyMyIsImFzYyI6dHJ1ZX0=');
+      expect(token, 'eyJpZCI6ImFiYzEyMyIsImFzYyI6dHJ1ZX0');
 
       final data = codec.decode(token);
       expect(data, {'id': 'abc123', 'asc': true});
@@ -18,7 +18,7 @@ void main() {
       final codec = ContinuationTokenCodec(secret: 'my-secret');
 
       final token = codec.encode({'id': 'abc123', 'asc': true});
-      expect(token, 'FltEF0dZUAQWDkgfQEdPUAQHDlsXBxcWFxg=');
+      expect(token, 'FltEF0dZUAQWDkgfQEdPUAQHDlsXBxcWFxg');
 
       final data = codec.decode(token);
       expect(data, {'id': 'abc123', 'asc': true});
