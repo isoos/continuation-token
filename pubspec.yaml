@@ -1,6 +1,6 @@
 name: continuation_token
 description: Encode and decode continuation token values for stateless pagination APIs.
-version: 1.0.1
+version: 2.0.0
 homepage: https://github.com/isoos/continuation-token
 author: Istvan Soos <istvan.soos@gmail.com>
 
