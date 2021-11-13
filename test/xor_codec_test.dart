@@ -7,10 +7,10 @@ import 'package:test/test.dart';
 void main() {
   test('Encode and decode random values', () {
     final random = Random.secure();
-    for (int j = 0; j < 10; j++) {
+    for (var j = 0; j < 10; j++) {
       final codec = XorCodec(List<int>.generate(
           10 + random.nextInt(10), (i) => random.nextInt(256)));
-      for (int i = 0; i < 1000; i++) {
+      for (var i = 0; i < 1000; i++) {
         final input = List<int>.generate(
             100 + random.nextInt(100), (i) => random.nextInt(256));
         final encoded = codec.encode(input);

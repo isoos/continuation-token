@@ -8,10 +8,10 @@ final base64UrlNoPad = base64Url.fuse(_NoPadCodec());
 
 class _NoPadCodec extends Codec<String, String> {
   @override
-  final encoder = _NoPadEncoder();
+  final Converter<String, String> encoder = _NoPadEncoder();
 
   @override
-  final decoder = _NoPadDecoder();
+  final Converter<String, String> decoder = _NoPadDecoder();
 }
 
 class _NoPadEncoder extends Converter<String, String> {

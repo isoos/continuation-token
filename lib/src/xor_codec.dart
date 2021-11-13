@@ -17,26 +17,26 @@ class XorCodec extends Codec<List<int>, List<int>> {
 }
 
 class _XorConverter extends Converter<List<int>, List<int>> {
-  final Uint8List _secretBytes;
+  final Uint8List? _secretBytes;
 
   _XorConverter._(this._secretBytes);
   factory _XorConverter(dynamic secret) => _XorConverter._(_castSecret(secret));
 
   @override
   List<int> convert(List<int> input) {
-    if (_secretBytes == null || _secretBytes.isEmpty) {
+    if (_secretBytes == null || _secretBytes!.isEmpty) {
       return input;
     } else {
       final bytes = Uint8List.fromList(input);
       for (int i = 0; i < bytes.length; i++) {
-        bytes[i] = bytes[i] ^ _secretBytes[i % _secretBytes.length];
+        bytes[i] = bytes[i] ^ _secretBytes![i % _secretBytes!.length];
       }
       return bytes;
     }
   }
 }
 
-Uint8List _castSecret(secret) {
+Uint8List? _castSecret(secret) {
   if (secret == null) {
     return null;
   } else if (secret is String) {

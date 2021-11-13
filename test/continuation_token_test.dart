@@ -1,6 +1,5 @@
-import 'package:test/test.dart';
-
 import 'package:continuation_token/continuation_token.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('valid token', () {

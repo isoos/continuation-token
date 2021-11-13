@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 void main() {
   test('Encode and decode random values', () {
     final random = Random.secure();
-    for (int i = 0; i < 10000; i++) {
+    for (var i = 0; i < 10000; i++) {
       final input = List<int>.generate(
           100 + random.nextInt(100), (i) => random.nextInt(256));
       final encoded = base64UrlNoPad.encode(input);
