@@ -1,9 +1,8 @@
 #   https://www.dartlang.org/guides/language/analysis-options
-include: package:pedantic/analysis_options.yaml
+include: package:lints/recommended.yaml
 
 analyzer:
   errors:
-    override_on_non_overriding_method: error
     unused_element: error
     unused_import: error
     unused_local_variable: error

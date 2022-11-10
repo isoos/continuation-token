@@ -1,3 +1,7 @@
+## 2.1.1
+
+- Updated lints.
+
 ## 2.1.0
 
 - Migrated to null safety.
