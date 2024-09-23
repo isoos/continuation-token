@@ -2,10 +2,14 @@ name: continuation_token
 description: Encode and decode continuation token values for stateless pagination APIs.
 version: 2.1.1
 homepage: https://github.com/isoos/continuation-token
+topics:
+  - continuation
+  - pagination
+  - encoding
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '^3.0.0'
 
 dev_dependencies:
-  lints: ^2.0.0
+  lints: ^4.0.0
   test: ^1.6.0
